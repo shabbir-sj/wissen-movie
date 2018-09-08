@@ -20,7 +20,7 @@
 		self.fetchMovies = fetchMovies;
 		self.getHeadData = getHeadData;
 
-		var baseUrl = 'http://starlord.hackerearth.com/movieslisting';
+		var baseUrl = window.location.origin + '/api';
 
 		function getHeadData() {
 			return [
