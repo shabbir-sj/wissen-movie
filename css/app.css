@@ -1,0 +1,135 @@
+body {
+	font-size: 16px;
+	font-family: Arial, sans-serif;
+}
+
+.space-2 {
+	padding: 1px;
+}
+.space-4 {
+	padding: 2px;
+}
+.space-6 {
+	padding-top: 3px;
+}
+.space-8 {
+	padding-top: 4px;
+}
+.space-10 {
+	padding-top: 5px;
+}
+.space-20 {
+	padding-top: 10px;
+}
+
+.red {
+	color: red;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/*----------------- Navbar ------------*/
+
+.navbar-default {
+	padding: 16px 50px;
+	margin-bottom: 0;
+	border: none;
+	border-radius: 0;
+    background-repeat: repeat-x;
+}
+
+.navbar-default .navbar-brand {
+	font-size: 23px;
+	letter-spacing: 1px;
+	padding: 15px;
+}
+
+.navbar-default .logo {
+	width: 40px;
+	height: 40px;
+	margin: 5px 5px 5px 50px;
+}
+
+@media screen and (max-width: 767px) {
+	.navbar-default {
+		padding: 16px;
+	}
+
+	.navbar-default .logo {
+		margin-left: 0;
+	}
+}
+
+/*---------------- dark theme -----------------*/
+
+body.dark-theme {
+	color: #fff;
+	background-color: #0f171e;
+}
+
+.dark-theme .primary-color {
+	color: #79b8f3;
+}
+
+.dark-theme .theme-color {
+	color: #37474F;
+}
+
+.dark-theme .theme-light-color {
+	color: #666666;
+}
+
+.dark-theme .theme-bg {
+	color: #37474F;
+}
+
+.dark-theme .theme-light-bg {
+	color: #ECEFF1;
+}
+
+.dark-theme .navbar-default {
+    background-image: linear-gradient(180deg,#1b2530 0,rgba(27,37,48,.85));
+}
+
+.dark-theme .navbar-default .navbar-brand {
+	color: white;
+}
+
+.dark-theme .navbar-default .navbar-brand:focus,
+.dark-theme .navbar-default .navbar-brand:hover {
+    color: gainsboro;
+}
+
+/*---------------- light theme -----------------*/
+
+.light-theme .primary-color {
+	color: #79b8f3;
+}
+
+.light-theme .navbar-default .navbar-brand {
+	color: #425265;
+}
+
+.light-theme .navbar-default .logo {
+    box-shadow: 1px 1px 1px 2px lightgrey;
+}
+
+.light-theme .navbar-default {
+    background-image: linear-gradient(180deg,#f1f1f1 0,gainsboro);
+}

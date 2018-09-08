@@ -1,0 +1,94 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+	<title> Wissen Movie </title>
+	<meta name="description" content="">
+
+	<meta property="og:url" content="http://www.localhost.com/"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="Wissen Movie - Any where any time"/>
+	<meta property="og:description" content="Wissen Movie providing entertainment contents."/>
+	<meta property="og:image" content=""/>
+</head>
+
+<body class="dark-theme">
+
+	<!-- ================================== CSS ================================ -->
+	<!-- Fonts Awesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel = "stylesheet">
+
+
+	<!-- build:remove -->
+
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/list.css">
+	<link rel="stylesheet" href="css/pagination.css">
+
+	<!-- /build -->
+
+	<!-- build:template
+	<link href="css/site-app-1.0.0.<%= appCSSversion %>.min.css" rel = "stylesheet">
+	<!-- /build -->
+	<!-- ================================== CSS ================================ -->
+
+	<!-- Pages Content -->
+	<div class="navbar navbar-default">
+		<img class="pull-left logo" src="./resources/images/logo.jpg" alt="wissen movie"/>
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"><span>Wissen</span>&nbsp;<span class="primary-color">Movie</span></a>
+		</div>
+		<button id="theme-button" class="pull-right" theme="dark-theme">Light Theme</button>
+	</div>
+
+	<div id="app">
+
+		<div id="list-spinner">
+			<i class="fa fa-spin fa-spinner"></i>
+		</div>
+
+		<div id="error-msg"></div>
+
+		<table class="table table-bordered" id="movie-table">
+			<thead id="movie-table-head"></thead>
+			<tbody id="movie-table-body"></tbody>
+		</table>
+
+		<div class="list-pagination">
+			<div class="pagination" id="pagination-ui"></div>
+		</div>
+	</div>
+	<!-- End Page Content -->
+
+	<!--- =============================== Scripts =============================== -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+
+	<script>
+		_GLOBAL_MODULE = {
+		}
+	</script>
+	<!-- build:remove -->
+	<script src="src/utils.js"></script>
+	<script src="src/services/http.js"></script>
+	<script src="src/services/movie-model.js"></script>
+	<script src="src/services/movie-service.js"></script>
+	<script src="src/services/paginator.js"></script>
+
+	<script src="src/components/theme.js"></script>
+	<script src="src/components/pagination.js"></script>
+
+	<script src="src/controllers/movielist-controller.js"></script>
+	<!-- /build -->
+
+	<!-- build:template
+	<script src="js/site-app-1.0.0.<%= appJSversion %>.min.js" ></script>
+	<!-- /build -->
+
+
+</body>
+
+</html>

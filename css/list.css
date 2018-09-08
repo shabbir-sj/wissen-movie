@@ -1,0 +1,102 @@
+#app {
+	font-size: 11pt;
+	margin: 50px;
+	min-height: 100vh;
+}
+
+.table-bordered > thead > tr > th {
+	position: relative;
+	padding-right: 30px;
+}
+
+.table-bordered > thead > tr > th > i {
+	position: absolute;
+	right: 8px;
+	cursor: pointer;
+}
+
+.table-bordered > thead > tr > th > i.fa-caret-up {
+	bottom: 15px;
+}
+
+.table-bordered > thead > tr > th > i.fa-caret-down {
+	bottom: 5px;
+}
+
+
+table > tbody {
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	font-family: sans-serif;
+}
+
+#theme-button {
+	display: inline-block;
+	margin: 6px;
+	padding: 8px 16px;
+	height: inherit;
+	border-radius: 0;
+	font-size: 14px;
+	border: none;
+	letter-spacing: 0.5px;
+}
+
+#list-spinner {
+	text-align: center;
+}
+
+#list-spinner.show {
+	margin: 20px 0;
+	visibility: visible;
+}
+
+#list-spinner.hide {
+	margin: 20px 0;
+	visibility: hidden;
+}
+
+#list-spinner i {
+	color: grey;
+	font-size: 30pt;
+}
+
+/*---------------- dark theme -----------------*/
+
+.dark-theme .table-bordered > thead > tr > th {
+	background-color: #252e39;
+	color: #79b8f3;
+}
+
+.dark-theme table > tbody > tr:nth-child(even) {
+	background-color: #252e39;
+}
+
+.dark-theme #theme-button {
+	background-color: #eee;
+	color: #333;
+}
+
+.dark-theme #theme-button:hover {
+	color: black;
+	background-color: #ccc;
+}
+
+/*---------------- light theme -----------------*/
+
+.light-theme .table-bordered > thead > tr > th {
+	background-color: #f1f1f1;
+}
+
+.light-theme table > tbody > tr:nth-child(even) {
+	background-color: #f8f8f8;
+}
+
+.light-theme #theme-button {
+	background-color: #425265;
+	color: #fff;
+}
+
+.light-theme #theme-button:hover {
+	color: #fff;
+	background-color: #566b84;
+}

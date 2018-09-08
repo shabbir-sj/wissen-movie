@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+xcuserdata
+/data
+cdn.local
+node_modules
+npm-debug.log
