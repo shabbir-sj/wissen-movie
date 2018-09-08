@@ -14,7 +14,7 @@
 	var paginationComponent = _GLOBAL_MODULE.paginationComponent;
 	var themeComponent = _GLOBAL_MODULE.themeComponent;
 
-	var movies;
+	var movies, _currentPage = 1;
 	var headData = movieService.getHeadData();
 
 	function showHideLoader(show) {
@@ -25,7 +25,7 @@
 	function resetSort(headItem) {
 		for (var i = 0; i < headData.length; ++i) {
 			if (headData[i].enable) {
-				if (headItem.key === headData[i].key) {
+				if (headItem && headItem.key === headData[i].key) {
 					headData[i].sort = !headData[i].sort;
 				} else {
 					headData[i].sort = null;
@@ -60,7 +60,8 @@
 
 	// filter list by page
 	function filterList(currentPage) {
-		fetchList(currentPage);
+		_currentPage = currentPage;
+		fetchList(currentPage, headData);
 	}
 
 	function appendtd(tr, text) {
@@ -80,22 +81,48 @@
 		})
 	}
 
+	function addSortUI(headItem, parentNode) {
+		if (headItem.sort == null) {
+			appendi(parentNode, 'fa-caret-up', headItem);
+			appendi(parentNode, 'fa-caret-down', headItem);
+		} else if (headItem.sort) {
+			appendi(parentNode, 'fa-caret-up', headItem);
+		} else {
+			appendi(parentNode, 'fa-caret-down', headItem);
+		}
+	}
+
+	function addFilterUI(headItem, parentNode) {
+		var input = document.createElement('input');
+		input.setAttribute('type', 'text');
+		input.setAttribute('name', headItem.key);
+		input.value = headItem.filter || '';
+		input.addEventListener('keyup', function (event) {
+			if (event.keyCode == 13 && event.target.tagName === 'INPUT') {
+				headItem.filter = event.target.value;
+				resetSort();
+				fetchList(_currentPage, headData);
+			}
+		});
+		parentNode.appendChild(input);
+	}
+
 	// create th element with sorting support
 	function appendth(tr, headItem) {
 		var th = document.createElement('th');
+		var div1 = document.createElement('div');
+		div1.style.position = 'relative';
 		var span = document.createElement('span');
 		span.innerText = headItem.title;
-		th.appendChild(span);
+		div1.appendChild(span);
+		th.appendChild(div1);
 
 		if (headItem.enable) {
-			if (headItem.sort == null) {
-				appendi(th, 'fa-caret-up', headItem);
-				appendi(th, 'fa-caret-down', headItem);
-			} else if (headItem.sort) {
-				appendi(th, 'fa-caret-up', headItem);
-			} else {
-				appendi(th, 'fa-caret-down', headItem);
-			}
+			addSortUI(headItem, div1);
+
+			var div2 = document.createElement('div');
+			addFilterUI(headItem, div2);
+			th.appendChild(div2);
 		}
 
 		tr.appendChild(th);
@@ -163,9 +190,9 @@
 	}
 
 	// Fetch movie list from server
-	function fetchList(page, languageFilter, countryFilter, searchTerm) {
+	function fetchList(page, filterData) {
 		showHideLoader(true);
-		movieService.fetchMovies(page, languageFilter, countryFilter, searchTerm)
+		movieService.fetchMovies(page, filterData)
 			.then(handleListResponse)
 			.catch(handleListError)
 			.finally(function () {

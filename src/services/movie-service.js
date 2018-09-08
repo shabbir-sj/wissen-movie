@@ -20,7 +20,7 @@
 		self.fetchMovies = fetchMovies;
 		self.getHeadData = getHeadData;
 
-		var baseUrl = window.location.origin + '/api';
+		var baseUrl = 'http://starlord.hackerearth.com/movieslisting';
 
 		function getHeadData() {
 			return [
@@ -44,21 +44,21 @@
 					title: 'genres',
 					key: 'genres',
 					sort: null,
-					filter: [],
+					filter: '',
 					enable: true
 				},
 				{
 					title: 'language',
 					key: 'language',
 					sort: null,
-					filter: [],
+					filter: '',
 					enable: true
 				},
 				{
 					title: 'country',
 					key: 'country',
 					sort: null,
-					filter: [],
+					filter: '',
 					enable: true
 				},
 				{
@@ -69,14 +69,14 @@
 					title: 'budget',
 					key: 'budget',
 					sort: null,
-					filter: [],
+					filter: '',
 					enable: true
 				},
 				{
 					title: 'Title Year',
 					key: 'titleYear',
 					sort: null,
-					filter: [],
+					filter: '',
 					enable: true
 				},
 				{
@@ -114,27 +114,48 @@
 		/*
 		 Filter by page
 		 */
-		function getMovie(page) {
+		function getMovie(page, filterData) {
 			if (!self.movies)
 				return;
+
+			filterData = filterData|| [];
+			var filters = filterData.filter(function (item) {
+				return item.enable && item.filter && item.filter.length;
+			});
+
+			var filteredResult;
+			if (!filters.length) {
+				filteredResult = self.movies;
+			} else {
+				filteredResult = self.movies.filter(function (item) {
+					var i, source, tobefind;
+					for (i = 0; i < filters.length; ++i) {
+						source = item[filters[i].key].toLowerCase();
+						tobefind = filters[i].filter.trim().toLowerCase();
+						if (source.indexOf(tobefind) !== -1)
+							return true;
+					}
+				});
+			}
 
 			page = page || 1;
 
 			var startIndex = (page-1)*pageSize;
-			var filteredPage = 	self.movies.slice(startIndex, startIndex + pageSize);
+			var filteredPage = 	filteredResult.slice(startIndex, startIndex + pageSize);
 			return {
 				data: filteredPage,
 				originalList: self.movies,
-				maxSize: self.movies.length
+				maxSize: filteredResult.length
 			}
 		}
+
 		/*
 		 Fetch Movie List
 		 */
-		function fetchMovies(page, languageFilter, countryFilter, searchTerm) {
+		function fetchMovies(page, filterData) {
 
 			if (self.movies) {
-				return Promise.resolve(getMovie(page, languageFilter, countryFilter, searchTerm));
+				return Promise.resolve(getMovie(page, filterData));
 			}
 
 			var headers = {

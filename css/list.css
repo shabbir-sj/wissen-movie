@@ -2,25 +2,33 @@
 	font-size: 11pt;
 	margin: 50px;
 	min-height: 100vh;
+	overflow: scroll;
 }
 
-.table-bordered > thead > tr > th {
+.table-bordered > thead > tr > th > div:first-child {
 	position: relative;
 	padding-right: 30px;
 }
 
-.table-bordered > thead > tr > th > i {
+.table-bordered > thead > tr > th > div > i {
 	position: absolute;
 	right: 8px;
 	cursor: pointer;
 }
 
-.table-bordered > thead > tr > th > i.fa-caret-up {
-	bottom: 15px;
+.table-bordered > thead > tr > th > div > i.fa-caret-up {
+	bottom: 10px;
 }
 
-.table-bordered > thead > tr > th > i.fa-caret-down {
-	bottom: 5px;
+.table-bordered > thead > tr > th > div >  i.fa-caret-down {
+	bottom: 0;
+}
+
+.table-bordered > thead > tr > th > div > input {
+	margin-top: 10px;
+	color: #333;
+	width: 100px;
+	font-weight: 300;
 }
 
 
@@ -58,6 +66,12 @@ table > tbody {
 #list-spinner i {
 	color: grey;
 	font-size: 30pt;
+}
+
+@media screen and (max-width: 767px) {
+	#app {
+		margin: 10px;
+	}
 }
 
 /*---------------- dark theme -----------------*/
