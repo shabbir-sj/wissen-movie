@@ -48,11 +48,11 @@
 
 	}
 
-	function setUI(totalItems) {
+	function setUI(totalItems, currentPage) {
 		if (!totalItems)
 			return;
 
-		var paginationData = paginator(totalItems, _currentPage, pageSize, maxPages);
+		var paginationData = paginator(totalItems, currentPage, pageSize, maxPages);
 		createPaginationUI(paginationData);
 	}
 

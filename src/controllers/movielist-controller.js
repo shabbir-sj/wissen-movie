@@ -103,6 +103,7 @@
 			if (event.keyCode == 13 && event.target.tagName === 'INPUT') {
 				headItem.filter = event.target.value;
 				resetSort();
+				_currentPage = 1;
 				fetchList(_currentPage, headData);
 			}
 		});
@@ -177,7 +178,7 @@
 		movies = res.data;
 		createTableUI(movies);
 
-		paginationComponent.setUI(res.maxSize);
+		paginationComponent.setUI(res.maxSize, _currentPage);
 	}
 
 	// Show error message
