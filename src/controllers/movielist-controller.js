@@ -97,6 +97,8 @@
 		input.setAttribute('type', 'text');
 		input.setAttribute('name', headItem.key);
 		input.value = headItem.filter || '';
+		input.placeholder = 'type and enter';
+		input.title = 'type and enter to see result';
 		input.addEventListener('keyup', function (event) {
 			if (event.keyCode == 13 && event.target.tagName === 'INPUT') {
 				headItem.filter = event.target.value;

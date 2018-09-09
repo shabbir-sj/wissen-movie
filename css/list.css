@@ -29,6 +29,12 @@
 	color: #333;
 	width: 100px;
 	font-weight: 300;
+	font-size: 13px;
+	padding: 3px 5px;
+}
+
+input::-webkit-input-placeholder {
+	color: lightgrey;
 }
 
 
